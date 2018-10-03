@@ -26,13 +26,22 @@ def print_inorder(root):
 	print(root.data)
 	print_inorder(root.r_child)
 
-for i in range(5):
-	if i==0:
-		r=Node(int(input("Enter the element to insert in BST : ")))
+def size_of_the_tree(r):
+	if not r:
+		return 0
 	else:
-		d=int(input("Enter the element to insert in BST : "))
-		insert_node(r,Node(d))
+		return 1+size_of_the_tree(r.l_child)+size_of_the_tree(r.r_child)
+
+r=Node(5)
+insert_node(r,Node(3))
+insert_node(r,Node(10))
+insert_node(r,Node(4))
+insert_node(r,Node(16))
+insert_node(r,Node(8))
+insert_node(r,Node(18))
+print("Elements in the BST are : ")
 print_inorder(r)
+print("Size of the tree is : ",size_of_the_tree(r))
 
 
 		
