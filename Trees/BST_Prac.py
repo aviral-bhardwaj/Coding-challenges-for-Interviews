@@ -97,7 +97,7 @@ def height(r):
 	return 1+max(height(r.left) if r.left is not None else 0,height(r.right) if r.right is not None else 0)
 def minValueNode(node):
 	c=node
-	while c is not None:
+	while c.left is not None:
 		c=c.left
 	return c
 	
@@ -113,13 +113,13 @@ def delete_node(r,k):
 			temp=r.right
 			r=None
 			return temp
-		elif r.right in None:
+		elif r.right is None:
 			temp=r.left
 			r=None
 			return temp
-		temp=minValueNode(r.right,k)
+		temp=minValueNode(r.right)
 		r.data=temp.data
-		r.right=delete_node(r.right,k)
+		r.right=delete_node(r.right,temp.data)
 	return r
 
 def diameter_of_tree(r):
@@ -140,8 +140,9 @@ for i in l[1:]:
 	insert_node(r,Node(i))
 in_order(r)
 print("After deleting node 5 tree is as below : ")
+delete_node(r,9)
 in_order(r)
-print(diameter_of_tree(r))
+#print(diameter_of_tree(r))
 print("The height of the tree is : ",height(r))
 
 
