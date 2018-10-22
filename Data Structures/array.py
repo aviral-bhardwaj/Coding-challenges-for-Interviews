@@ -5,3 +5,6 @@ print(array2d)
 for i in array2d:
 	print(i)
 	
+
+	
+	
