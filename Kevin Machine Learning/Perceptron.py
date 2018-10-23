@@ -23,13 +23,13 @@ def validate_model(f_name,w_bar):
 			continue
 		else:
 			c+=1
-	print("Total number of correct predictions : ",c)
+	return c
 	
 
-def average_perceptron(X,y):
+def average_perceptron(m_value,X,y):
 	X=X.values
 	y=y.values
-	max_iters=15
+	max_iters=m_value
 	w=np.array([0 for i in range(X.shape[1])])
 	w_bar=np.array([0 for i in range(X.shape[1])])
 	c,s=0,0
@@ -52,10 +52,16 @@ def average_perceptron(X,y):
 	
 if __name__=="__main__":
 	X,Y=Extract_data("pa2_train.csv")
-	w=average_perceptron(X,Y)
-	print("w_bar after: ",w)
-	validate_model("pa2_valid.csv",w)
-	validate_model("pa2_train.csv",w)
+	max_iters=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+	res_valid=[]
+	res_train=[]
+	for i in max_iters:
+		w=average_perceptron(i,X,Y)
+		res_valid.append(validate_model("pa2_valid.csv",w))
+		res_train.append(validate_model("pa2_train.csv",w))
+	print(max_iters)
+	print(res_valid)
+	print(res_train)
 	
 
 	
