@@ -1,20 +1,9 @@
 import pandas as pd
 import numpy as np
 
-def Extract_traindata():
-	train_file="pa2_train.csv"
+def Extract_data(f_name):
+	train_file=f_name
 	fd=pd.read_csv(train_file,header=None)
-
-	y=fd.iloc[:,0:1]
-	X=fd.iloc[:,1:]
-	y=pd.DataFrame([1 if i==3 else -1 for i in y.values])
-	X.insert(loc=0, column='', value=[1]*4888)
-	
-	return X,y
-
-def Extract_validdata():
-	valid_file="pa2_valid.csv"
-	fd=pd.read_csv(valid_file,header=None)
 
 	y=fd.iloc[:,0:1]
 	X=fd.iloc[:,1:]
@@ -22,9 +11,10 @@ def Extract_validdata():
 	X.insert(loc=0, column='', value=[1]*X.shape[0])
 	
 	return X,y
+
 	
-def validate_model(w_bar):
-	X,y=Extract_validdata()
+def validate_model(f_name,w_bar):
+	X,y=Extract_data(f_name)
 	X,y=X.values,y.values
 	c=0
 	for (i,x) in enumerate(X):
@@ -61,10 +51,11 @@ def average_perceptron(X,y):
 		
 	
 if __name__=="__main__":
-	X,Y=Extract_traindata()
+	X,Y=Extract_data("pa2_train.csv")
 	w=average_perceptron(X,Y)
 	print("w_bar after: ",w)
-	validate_model(w)
+	validate_model("pa2_valid.csv",w)
+	validate_model("pa2_train.csv",w)
 	
 
 	
