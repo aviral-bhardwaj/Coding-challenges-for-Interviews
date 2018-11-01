@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 def Extract_data(f_name):
 	train_file=f_name
@@ -59,6 +60,13 @@ if __name__=="__main__":
 		w=average_perceptron(i,X,Y)
 		res_valid.append(validate_model("pa2_valid.csv",w))
 		res_train.append(validate_model("pa2_train.csv",w))
+		
+	plt.plot(max_iters,res_valid, '-',color='r')
+	plt.axis([0, 15, 1530, 1560])
+	plt.xlabel('Number of iterations')
+	plt.ylabel('Correct predictions')
+	plt.show()
+	
 	print(max_iters)
 	print(res_valid)
 	print(res_train)
