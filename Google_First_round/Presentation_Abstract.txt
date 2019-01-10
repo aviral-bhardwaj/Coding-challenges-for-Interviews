@@ -1,0 +1,12 @@
+Echo State Networks(ESNs) to address Caching and Mobility challenges in Information Centric Networks(ICNs)
+
+Abstract: ICNs reffered as the etire class of internet architectures that focus on content/data
+as the central entity as opposed to a host-centric networking architecture. This is the emerging 
+technology is the key to high speed (5G) internet. Though this architecture overcome most of the 
+limitations of conventional host-centric networking, it still have some challenges to address. 
+Some of these challenges include proactive caching and service continuity (Mobility issues) for mobile users. 
+Echo State Networks(ESNs) are the recurrent neural networks used to predict user request content distribution 
+and user mobilities to cluster the users and extract the most useful content to keep in the caches. This solution
+already proposed to solve caching issues in cloud radio access networks and this can solution also applied to address other problems.  
+Tomorrow I am going to present about how the ESNs works and how this can by applied to get better performance to address mobility issue mentioned in 
+Responsive content-centric delivery in large urban communication networks: a Link-NYC use-case.
